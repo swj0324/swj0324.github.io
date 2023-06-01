@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WonJun Sun | Personal Website</title>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script>
+        $(document).ready(function(){
+            var view_items = $('.view');
+            
+            //init
+            $(view_items[0]).css('display', 'block');
+            for(var i=1; i<view_items.length; i++){
+                $(view_items[i]).css('display', 'none');
+            }
+
+            function event_handle(i){
+                for(var j=0; j<view_items.length; j++){
+                    if(i==j){
+                        $(view_items[j]).css('display', 'block');
+                    }
+                    else{
+                        $(view_items[j]).css('display', 'none');
+                    }
+                }
+            }
+
+            var nav_items = $('.nav-item');
+            nav_items[0].addEventListener('click', function(){event_handle(0);});
+            nav_items[1].addEventListener('click', function(){event_handle(1);});
+            nav_items[2].addEventListener('click', function(){event_handle(2);});
+        
+        });
+    </script>
+    <style>
+        * { margin:0; padding: 0;}
+        body {width: 100%; margin: 0 auto; overflow: hidden; }
+        .nav-contents { background:#999; width: auto; height: 100vh; float: left; padding-left: 20px; padding-right:20px} 
+        .view-contents { background: #eee; width: auto; height: 100vh; font-size:50px;}
+        @media screen and (max-width: 767px) {
+            .nav-contents {width: 100vw; height: 5vh; float: none; }
+            .view-contents {width: 100vw; height: 95vh; float: none; }
+            .nav > li{
+                float:left;
+                margin: auto 10px auto 0;
+                overflow: scroll;
+            }
+            p{
+                float:left;
+            }
+            button{
+                float:left;
+            }
+        }
+        li{
+            margin: 0 auto;
+            list-style: none;
+        }
+        button{
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="nav-contents">
+            <ul class="nav">
+                <li>
+                    <button class="nav-item" onclick = "location.href = '#home'" id="nav1">Home</button>
+                </li>
+                <li>
+                    <button class="nav-item" onclick = "location.href = '#algorithm'" id="nav2">Algorithm</button>
+                </li>
+                <li>
+                    <button class="nav-item" onclick = "location.href = '#machine-learning'"id="nav3">ML</button>
+                </li>
+            </ul>
+        </div>
+
+        <div class="view-contents">
+            <div class="view" id="main">
+                <p>1</p>
+            </div>
+            <div class="view" id="al">
+                <p>2</p>
+            </div>
+            <div class="view" id="ml">
+                <p>3</p>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
