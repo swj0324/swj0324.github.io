@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0">
     <title>WonJun Sun | Personal Website</title>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script>
@@ -18,34 +18,37 @@
 
             function event_handle(i){
                 for(var j=0; j<view_items.length; j++){
-                    if(i==j){
+                    if(i-1==j){
                         $(view_items[j]).css('display', 'block');
+                        $(nav_items[j+1]).css('font-weight', 700);
                     }
                     else{
                         $(view_items[j]).css('display', 'none');
+                        $(nav_items[j+1]).css('font-weight', 500);
                     }
                 }
             }
 
             var nav_items = $('.nav-item');
-            nav_items[0].addEventListener('click', function(){event_handle(0);});
+            nav_items[0].addEventListener('click', function(){event_handle(1);});
             nav_items[1].addEventListener('click', function(){event_handle(1);});
             nav_items[2].addEventListener('click', function(){event_handle(2);});
+            nav_items[3].addEventListener('click', function(){event_handle(3);});
         
         });
     </script>
     <style>
         * { margin:0; padding: 0;}
-        body {width: 100%; margin: 0 auto; overflow: hidden; }
-        .nav-contents { background:#999; width: auto; height: 100vh; float: left; padding-left: 20px; padding-right:20px} 
-        .view-contents { background: #eee; width: auto; height: 100vh; font-size:50px;}
+        body {width: 100vw; margin: 0 auto; overflow: hidden; }
+        .container{width: 100vw; height: 100vh;}
+        .nav-contents { background:#999; width: 140px; height: 100vh; float: left;} 
+        .view-contents { background: #eee; width: 95vw; height: 100vh; font-size:50px;}
         @media screen and (max-width: 767px) {
-            .nav-contents {width: 100vw; height: 5vh; float: none; }
-            .view-contents {width: 100vw; height: 95vh; float: none; }
+            .nav-contents {width: 100vw; height: 5vh; float: none; overflow: hidden;}
+            .view-contents {width: 100vw; height: 95vh; float: none;}
             .nav > li{
                 float:left;
-                margin: auto 10px auto 0;
-                overflow: scroll;
+                margin: 10px 0 auto 0;
             }
             p{
                 float:left;
@@ -53,14 +56,45 @@
             button{
                 float:left;
             }
+            .img1{
+                display: block;
+                margin: 0 auto;
+            }
         }
         li{
-            margin: 0 auto;
+            margin-bottom: 30px;
+            padding: 0 20px 0 20px;
             list-style: none;
         }
         button{
             border: none;
+            background-color: transparent;
+            font-weight: 500;
         }
+        .img1{
+            width : 20%;
+            max-width: 180px;
+            float: left;
+            margin-right: 50px;
+        }
+        p{
+            font-family: 'Open Sans', 'Arial'; 
+            font-size: 12pt; 
+            font-style: normal; 
+            font-weight: normal;
+            text-decoration: normal; 
+            vertical-align: baseline;
+        }
+        button:active,
+        button:hover,
+        button:focus {
+            background: var(--button-hover-bg-color);
+            outline: 0;
+            font-weight: 700;
+        }
+button:disabled {
+  opacity: 0.5;
+}
     </style>
 </head>
 <body>
@@ -68,6 +102,9 @@
 
         <div class="nav-contents">
             <ul class="nav">
+                <li>
+                    <button class="nav-item" onclick = "location.href = '#home'">WonJun Sun</button>
+                </li>
                 <li>
                     <button class="nav-item" onclick = "location.href = '#home'" id="nav1">Home</button>
                 </li>
@@ -82,7 +119,13 @@
 
         <div class="view-contents">
             <div class="view" id="main">
-                <p>1</p>
+                <img class="img1" src = ./myimg.jpg>
+                <p>
+                    안녕하세요. 저는 현재 강원대학교 컴퓨터공학과 2학년에 재학중입니다.
+                </p>
+                <p>
+                    현재 관심있는 것은 알고리즘과 ML, RL입니다.
+                </p>
             </div>
             <div class="view" id="al">
                 <p>2</p>
@@ -91,7 +134,7 @@
                 <p>3</p>
             </div>
         </div>
-        
+
     </div>
 </body>
 </html>
