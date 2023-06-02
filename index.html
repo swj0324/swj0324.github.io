@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WonJun Sun | Personal Website</title>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script>
@@ -36,7 +36,31 @@
             nav_items[3].addEventListener('click', function(){event_handle(3);});
         
         });
-    </script>
+    </script> 
+    <script> //page3
+        $(document).ready(function () {
+        var width = $('[data-role="slider"]').attr('data-width');
+        var height = $('[data-role="slider"]').attr('data-height');
+        var count = $('[data-role="slider"] div.item').length;
+        $('[data-role="slider"]').css({
+        position: 'relative', overflow: 'hidden', width: width, height: height})
+        .find('.container').css({ 
+        position: 'absolute', width: count * width, overflow: 'hidden'})
+        .find('.item').css({
+        width: width, height: height, float: 'left'});
+        var currentPage = 0;
+        var changePage = function () {
+        $('[data-role="slider"] > .container').animate({left: -currentPage * width}
+        , 500);
+        };
+        $('#left-button').click(function () {
+        if (currentPage > 0) {currentPage--; changePage();}
+        });
+        $('#right-button').click(function () {
+        if (currentPage < count - 1) {currentPage++; changePage();}
+        });
+        });
+        </script>
     <style>
         * { margin:0; padding: 0;}
         body {width: 100vw; margin: 0 auto; overflow: hidden; }
@@ -56,7 +80,7 @@
             button{
                 float:left;
             }
-            .img1{
+            img{
                 display: block;
                 margin: 0 auto;
             }
@@ -74,7 +98,6 @@
         .img1{
             width : 20%;
             max-width: 180px;
-            float: left;
             margin-right: 50px;
         }
         p{
@@ -91,6 +114,9 @@
             background: var(--button-hover-bg-color);
             outline: 0;
             font-weight: 700;
+        }
+        .title{
+            height: 20px
         }
 button:disabled {
   opacity: 0.5;
@@ -109,10 +135,10 @@ button:disabled {
                     <button class="nav-item" onclick = "location.href = '#home'" id="nav1">Home</button>
                 </li>
                 <li>
-                    <button class="nav-item" onclick = "location.href = '#algorithm'" id="nav2">Algorithm</button>
+                    <button class="nav-item" onclick = "location.href = '#machine-learning'" id="nav2">ML</button>
                 </li>
                 <li>
-                    <button class="nav-item" onclick = "location.href = '#machine-learning'"id="nav3">ML</button>
+                    <button class="nav-item" onclick = "location.href = '#algorithm'"id="nav3">Algorithm</button>
                 </li>
             </ul>
         </div>
@@ -127,11 +153,39 @@ button:disabled {
                     현재 관심있는 것은 알고리즘과 ML, RL입니다.
                 </p>
             </div>
-            <div class="view" id="al">
+            <div class="view" id="ml">
                 <p>2</p>
             </div>
-            <div class="view" id="ml">
-                <p>3</p>
+            <div class="view" id="al">
+                <div class="title">
+                    <p>K-means clustering (No library) </p>
+                </div>
+                <div data-role="slider" data-width="300" data-height="300">
+                    <div class="container">
+                        <div class="item">
+                            <img src = ./k_means1.png width = 300px>
+                            <p>Random 3-vector / n=100 / group=3</p>
+                        </div>
+                        <div class="item">
+                            <img src = ./k_means2.png width = 300px>
+                            <p>Random 3-vector / n=100 / group=4</p>
+                        </div>
+                        <div class="item">
+                            <img src = ./k_means3.png width = 300px>
+                            <p>Random 3-vector / n=100 / group=5</p>
+                        </div>
+                        <div class="item">
+                            <img src = ./k_means4.png width = 300px>
+                            <p>Sorted 3-vector / n=100 / group=4</p>
+                        </div>
+                        <div class="item">
+                            <img src = ./k_means5.png width = 300px>
+                            <p>Sorted 3-vector / n=100 / group=6</p>
+                        </div>
+                    </div>
+                </div>
+                <button id="left-button">←</button>
+                <button id="right-button">→</button>
             </div>
         </div>
 
