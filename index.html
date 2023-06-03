@@ -62,34 +62,6 @@
             }
         });
     </script> 
-    <script> //page3
-        $(document).ready(function () {
-        var width = $('[data-role="slider"]').attr('width');
-        var height = $('[data-role="slider"]').attr('height');
-        var count = $('[data-role="slider"] div.item').length;
-
-        var p_width = $('[data-role="slider"] div.item').attr('width');
-        var p_height = $('[data-role="slider"] div.item').attr('height');
-
-        $('[data-role="slider"]').css({
-        position: 'relative', overflow: 'hidden', width: width, height: height})
-        .find('.container2').css({ 
-        position: 'absolute', width: count * p_width, overflow: 'hidden'})
-        .find('.item').css({
-        width: p_width, height: p_height, float: 'left'});
-        var currentPage = 0;
-        var changePage = function () {
-        $('[data-role="slider"] > .container2').animate({top: -currentPage * p_height}
-        , 500);
-        };
-        $('#left-button').click(function () {
-        if (currentPage > 0) {currentPage--; changePage();}
-        });
-        $('#right-button').click(function () {
-        if (currentPage < count - 1) {currentPage++; changePage();}
-        });
-        });
-        </script>
     <style>
         * { margin:0; padding: 0;}
         body {width: 100vw; height: 100vh;}
@@ -99,6 +71,7 @@
 
         li{
             list-style: none;
+            margin-bottom: 70px;
         }
 
         button{
@@ -135,7 +108,7 @@
             /* background-color: blue; */
             font-size: 20px;
         }
-        img{
+        .img1{
            height: 50vh;
         }
 
@@ -149,25 +122,33 @@
         }
 
         .d3_dl{
-            background-color: red;
-            display: flex;
+            /* background-color: red; */
+            display: block;
             align-items: center;
             justify-content: center;
             float:left;
             width: 45vw;
             height: 90vh;
-            font-size: 30px;
+            font-size: 21px;
+            overflow-x: hidden;
+            overflow-y: scroll;
         }
         .d3_dr{
-            background-color: blue;
+            /* background-color: blue; */
             display: block;
             float:right;
             width: 45vw;
             height: 90vh;
-            font-size: 30px;
+            font-size: 21px;
+        }
+        .img2{
+            height: 45vh;
         }
         
-
+        .img3{
+            width: 45vw;
+        }
+        
         @media screen and (max-width: 767px) {
             .nav-contents {width: 100vw; height: 5vh; float: none; overflow: hidden;}
             .view-contents {width: 100vw; height: 95vh; float: none;}
@@ -176,7 +157,7 @@
                 float:left;
             }
 
-            img{
+            .img1{
                 height: 30vh;
             }
             
@@ -196,6 +177,30 @@
                 display:block;
                 width:100vw;
                 height: 20vh;
+            }
+            
+            .d3_u{
+                font-size: 22px;
+            }
+            .d3_dl{
+                display: block;
+                width: 100vw;
+                height: 45vh;
+                font-size: 17px;
+            }
+
+            .d3_dr{
+                display: block;
+                width: 100vw;
+                height: 45vh;
+                font-size: 17px;
+            }
+    
+            .img2{
+                height: 40vh;
+            }
+            .img3{
+                width: 100vw;
             }
         }
 
@@ -251,13 +256,13 @@
                     <hr>
                 </div>
                 <div class="d2_m">
-                    <img src = ./pic1.jpg>
-                    <img src = ./pic2.jpg>
+                    <img class="img2" src = ./pic1.jpg>
+                    <img class="img2" src = ./pic2.jpg>
                 </div>
                 <div class="d2_d">
                     <hr>
                     <p>
-                        그동안 알고리즘 공부한 것을 테스트해볼겸, 2022년 9월~10월에 있었던 2023 카카오 신입공채에 지원하여<br>
+                        그 동안 알고리즘 공부한 것을 테스트해볼겸, 2022년 9월~10월에 있었던 2023 카카오 신입공채에 지원하여<br>
                         비록 최종합격까진 못했지만, 1차 및 2차 코딩테스트를 모두 통과할 수 있었습니다.
                     </p>
                     <hr>
@@ -269,59 +274,42 @@
                 </div>
                 <div class="d3_dl">
                     <div class="item">
-                        <img src = ./k_means1.png>
-                        <p>Random 3-vector / n=100 / group=3</p>
+                        <p>#1. Random 3-vector / n=100 / group=3</p>
+                        <img class="img3" src = ./k_means1.png>
                     </div>
+                    <hr>
                     <div class="item">
-                        <img src = ./k_means2.png>
-                        <p>Random 3-vector / n=100 / group=4</p>
+                        <p>#2. Random 3-vector / n=100 / group=4</p>
+                        <img class="img3" src = ./k_means2.png>
                     </div>
+                    <hr>
                     <div class="item">
-                        <img src = ./k_means3.png>
-                        <p>Random 3-vector / n=100 / group=5</p>
+                        <p>#3. Random 3-vector / n=100 / group=5</p>
+                        <img class="img3" src = ./k_means3.png>
                     </div>
+                    <hr>
                     <div class="item">
-                        <img src = ./k_means4.png>
-                        <p>Sorted 3-vector / n=100 / group=4</p>
+                        <p>#4. Sorted 3-vector / n=100 / group=4</p>
+                        <img class="img3" src = ./k_means4.png>
                     </div>
+                    <hr>
                     <div class="item">
-                        <img src = ./k_means5.png>
-                        <p>Sorted 3-vector / n=100 / group=6</p>
+                        <p>#5. Sorted 3-vector / n=100 / group=6</p>
+                        <img class="img3" src = ./k_means5.png>
                     </div>
                 </div>
                 <div class="d3_dr">
-                    <button id="left-button">←</button>
-                    <button id="right-button">→</button>
+                    <p>
+                        [설명]
+                        100개의  3-vector에 대해서 K-means Clustering을 적용시킨다. <br>
+                        #1 ~ #3의 경우, 3-vector의 각 성분값을 0에서 100사이의 숫자중 하나로 Random하게 선택하였고,<br>
+                        #4 ~ #5의 경우, 각 3-vector의 값을 [0, 0, 0] , [1, 1, 1] , ... ,[100, 100, 100] 으로 설정하였다.<br>
+                    </p>
+                    <hr>
+                    <p>
+                        다음 링크를 클릭하시면, 작성된 <a href="./kmeansClustering.py">코드</a>를 보실 수 있습니다.
+                    </p>
                 </div>
-                <!-- <div class="title">
-                    <p>K-means clustering 알고리즘 구현 </p>
-                </div>
-                <div data-role="slider" data-width="300" data-height="300">
-                    <div class="container">
-                        <div class="item">
-                            <img src = ./k_means1.png width = 300px>
-                            <p>Random 3-vector / n=100 / group=3</p>
-                        </div>
-                        <div class="item">
-                            <img src = ./k_means2.png width = 300px>
-                            <p>Random 3-vector / n=100 / group=4</p>
-                        </div>
-                        <div class="item">
-                            <img src = ./k_means3.png width = 300px>
-                            <p>Random 3-vector / n=100 / group=5</p>
-                        </div>
-                        <div class="item">
-                            <img src = ./k_means4.png width = 300px>
-                            <p>Sorted 3-vector / n=100 / group=4</p>
-                        </div>
-                        <div class="item">
-                            <img src = ./k_means5.png width = 300px>
-                            <p>Sorted 3-vector / n=100 / group=6</p>
-                        </div>
-                    </div>
-                </div>
-                <button id="left-button">←</button>
-                <button id="right-button">→</button> -->
             </div>
         </div>
 
