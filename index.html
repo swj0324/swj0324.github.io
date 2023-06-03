@@ -34,19 +34,19 @@
             nav_items[1].addEventListener('click', function(){event_handle(1);});
             nav_items[2].addEventListener('click', function(){event_handle(2);});
             nav_items[3].addEventListener('click', function(){event_handle(3);});
-            
+            //
+
             if($(window).width()>=767){
                 var left_width = $('.d1_ul').width();
                 var view_width = $('.view').width();
-                console.log("left_width:" + left_width);
-                console.log("view_width:" + view_width);
-                console.log("right_width:" + (view_width - left_width));
+                // console.log("left_width:" + left_width);
+                // console.log("view_width:" + view_width);
+                // console.log("right_width:" + (view_width - left_width));
                 $('.d1_ur').width(view_width - left_width);
             }
             else{
                 $('.d1_ur').width("100vw");
             }
-            //
         });
         $(window).resize(function(){
             if($(window).width()>=767){
