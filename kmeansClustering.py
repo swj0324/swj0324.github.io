@@ -1,4 +1,6 @@
+from mpl_toolkits.mplot3d import Axes3D
 import sys
+import matplotlib.pyplot as plt
 import numpy as np
 
 # x : clustering 해야할 vectors / type : list of ndarray / len(x) = n 
@@ -108,3 +110,29 @@ for group in range(k):
     print("# of vectors for cluster", group+1, ":", group_size[group])
 
 
+n = 100
+xmin, xmax, ymin, ymax, zmin, zmax = 0, 20, 0, 20, 0, 20
+cmin, cmax = 0, 2
+
+xs = np.zeros(100)
+ys = np.zeros(100)
+zs = np.zeros(100)
+color = np.zeros(100)
+
+for idx in range(len(x)):
+    xs[idx] = x[idx][0]
+    ys[idx] = x[idx][1]
+    zs[idx] = x[idx][2]
+    color[idx] = c[idx]+1
+
+fig = plt.figure(figsize=(6, 6))
+ax = fig.add_subplot(111, projection='3d')
+#ax.patch.set_facecolor('#a5e6b6')
+
+for idx in range(0, k):
+    mark = "$" + str(idx+1) + "$"
+    ax.scatter(z[idx][0], z[idx][1], z[idx][2], c = 'k', marker=mark, s=40)
+
+ax.scatter(xs, ys, zs, c=color, marker='o', s=15)
+
+plt.show()
